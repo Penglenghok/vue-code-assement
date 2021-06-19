@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="cart-container" v-if="!$store.state.loading">
+    <Card :value="item" v-for="item in $store.state.dataUser" :key="item.id" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<style scoped>
+.cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin:12px;
+}
+</style>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import Card from "../components/Card.vue";
 export default defineComponent({
-  name: 'Home',
-  components: {
-    HelloWorld,
-  },
+  name: "Home",
+  components: { Card },
 });
 </script>
